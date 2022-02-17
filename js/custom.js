@@ -37,7 +37,6 @@ function calculate(){
     // const balanceTotal = document.getElementById('totalBalance');
     balanceTotal.innerText = balance;
     expenseTotal.innerText = totalCost;
-    incomeInput.value = '';
     inputFoodCost.value = '';
     inputRentCost.value = '';
     inputClothCost.value = '';
@@ -45,7 +44,6 @@ function calculate(){
     if(myIncome < totalCost ){
         window.alert('Sorry! Your Income is less than Expense');
     }
-    // return totalCost;
 }
  
 
@@ -64,5 +62,36 @@ document.getElementById('calculate-btn').addEventListener('click', function(){
 document.getElementById('save-btn').addEventListener('click', function(){
     // console.log('Save Button Clicked..');
     
+    const inputSave = document.getElementById('inputSave');
+    const inputSaveText = inputSave.value;
+    const saveAmountPercent = parseFloat(inputSaveText);
+    // console.log(saveAmount)
+    const incomeInput = document.getElementById('inputIncome');
+    const incomeText =  incomeInput.value;
+    const myIncome = parseFloat(incomeText);
+    const amountSave = (myIncome*saveAmountPercent)/100;
+    // console.log(amountSave);
+    const savingAmount = document.getElementById('saving-amount');
+    savingAmount.innerText = amountSave;
+
+    const myBalance = document.getElementById('totalBalance')
+    const myBalanceText = myBalance.innerText;
+    const myBalanceAmount = parseFloat(myBalanceText);
+    // console.log(myBalanceAmount);
+    
+    const remainingBalance = document.getElementById('remaining-balance');
+    if(myBalanceAmount > amountSave){
+        const myremainingBalance = myBalanceAmount - amountSave;
+    remainingBalance.innerText = myremainingBalance;
+    incomeInput.value = '';
+    }
+    else{
+        window.alert('Sorry! Your Saving Amount is Over'); 
+    }
+    
+    
+
+
+
 })
 
