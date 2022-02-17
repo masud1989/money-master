@@ -10,7 +10,7 @@
 
 // }
 
-// Getting Expense
+// Calculate
 function calculate(){
     // getting food cost 
     const inputFoodCost = document.getElementById('foodCost');
@@ -24,13 +24,13 @@ function calculate(){
     const inputClothCost = document.getElementById('clothCost');
     const inputClothCostText = inputClothCost.value;
     const clothCost = inputClothCostText;
-
+  
     // getting Total Cost 
     const totalCost = parseFloat(foodCost) + parseFloat(rentCost) + parseFloat(clothCost);
     const incomeInput = document.getElementById('inputIncome');
     const incomeText =  incomeInput.value;
     const myIncome = parseFloat(incomeText);
-    
+    // getting balance
     const balance = myIncome - totalCost;
     const expenseTotal = document.getElementById('totalExpense');
     const balanceTotal = document.getElementById('totalBalance');
@@ -41,29 +41,20 @@ function calculate(){
     inputFoodCost.value = '';
     inputRentCost.value = '';
     inputClothCost.value = '';
-  
+    
+    if(myIncome < totalCost ){
+        window.alert('Sorry! Your Income is less than Expense');
+    }
     // return totalCost;
 }
- 
-
-
-// function calculate(){
-//     const expenseTotal = document.getElementById('totalExpense');
-//     // const balance = income - totalCost;
-//     expenseTotal.innerText = totalCost;
-//     getExpense()
-
-// }
-
  
 
 document.getElementById('calculate-btn').addEventListener('click', function(){
     // console.log('Calculate Button Clicked..');
     // const incomeTest = getIncomeValue();
-    
     // console.log(incomeTest);
-
     const totalCostTest = calculate();
+
     // const 
     // const totalExpense = document.getElementById('totalExpense');
     // totalExpense.innerText = totalCost;
@@ -72,5 +63,6 @@ document.getElementById('calculate-btn').addEventListener('click', function(){
 })
 document.getElementById('save-btn').addEventListener('click', function(){
     // console.log('Save Button Clicked..');
+    
 })
 
